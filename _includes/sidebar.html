@@ -1,0 +1,11 @@
+<aside class="sidebar">
+  <p class="sidebar__title"><a href="{{ '/' | relative_url }}" style="border-bottom:none;">{{ site.title }}</a></p>
+  <p class="sidebar__tagline">{{ site.tagline }}</p>
+  <nav class="sidebar__nav">
+    <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="is-active"{% endif %}>home</a>
+    <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/posts/' or page.url == '/blog/' %}class="is-active"{% endif %}>blog</a>
+    <a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects/' %}class="is-active"{% endif %}>projects</a>
+    <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="is-active"{% endif %}>about</a>
+  </nav>
+  <div class="sidebar__rule" aria-hidden="true"></div>
+</aside>

@@ -1,0 +1,40 @@
+---
+layout: default
+title: Home
+permalink: /
+---
+<p class="intro">{{ site.description }}</p>
+
+{% assign recent_posts = site.posts | slice: 0, 4 %}
+{% assign recent_projects = site.projects | slice: 0, 2 %}
+
+<div class="card-grid">
+{% for post in recent_posts %}
+<div class="card">
+  <div class="card__meta">
+    <span class="stamp">post</span>
+    <span class="card__date">{{ post.date | date: "%d.%m.%Y" }}</span>
+  </div>
+  <h2 class="card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <p class="card__excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+  <a class="card__more" href="{{ post.url | relative_url }}">read more &rarr;</a>
+</div>
+{% endfor %}
+
+{% for project in recent_projects %}
+<div class="card">
+  <div class="card__meta">
+    <span class="stamp">project</span>
+  </div>
+  <h2 class="card__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+  <p class="card__excerpt">{{ project.excerpt | strip_html | truncatewords: 28 }}</p>
+  <a class="card__more" href="{{ project.url | relative_url }}">view project &rarr;</a>
+</div>
+{% endfor %}
+
+{% if recent_posts.size == 0 and recent_projects.size == 0 %}
+<div class="card">
+  <p class="card__excerpt">Nothing published yet. Check back soon!</p>
+</div>
+{% endif %}
+</div>

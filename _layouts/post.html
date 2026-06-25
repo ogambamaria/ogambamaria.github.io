@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article>
+  <header class="post-header">
+    <span class="stamp">post</span>
+    <h1 class="post-header__title">{{ page.title }}</h1>
+    <div class="post-header__meta">
+      <span class="card__date">{{ page.date | date: "%d.%m.%Y" }}</span>
+      {% if page.tags.size > 0 %}
+        <div class="stack">
+          {% for tag in page.tags %}<span class="stack__item">{{ tag }}</span>{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ '/blog/' | relative_url }}">&larr; all posts</a>
+    <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+  </footer>
+</article>

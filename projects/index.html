@@ -1,0 +1,28 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+<p class="intro">things I've built.</p>
+
+<div class="card-grid">
+{% for project in site.projects %}
+  <div class="card">
+    <div class="card__meta">
+      <span class="stamp">project</span>
+    </div>
+    <h2 class="card__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+    <p class="card__excerpt">{{ project.excerpt | strip_html | truncatewords: 26 }}</p>
+    {% if project.stack %}
+      <div class="stack">
+        {% for item in project.stack %}<span class="stack__item">{{ item }}</span>{% endfor %}
+      </div>
+    {% endif %}
+    <a class="card__more" href="{{ project.url | relative_url }}">view project &rarr;</a>
+  </div>
+{% else %}
+  <div class="card">
+    <p class="card__excerpt">No projects yet. Check back soon!</p>
+  </div>
+{% endfor %}
+</div>

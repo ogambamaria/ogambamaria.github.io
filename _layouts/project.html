@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article>
+  <header class="project-header">
+    <span class="stamp">project</span>
+    <h1 class="project-header__title">{{ page.title }}</h1>
+
+    {% if page.stack %}
+      <div class="stack">
+        {% for item in page.stack %}<span class="stack__item">{{ item }}</span>{% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.repo or page.demo %}
+      <div class="project-links">
+        {% if page.repo %}<a href="{{ page.repo }}">source &rarr;</a>{% endif %}
+        {% if page.demo %}<a href="{{ page.demo }}">live demo &rarr;</a>{% endif %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="project-body">
+    {{ content }}
+  </div>
+
+  <footer class="project-footer">
+    <a href="{{ '/projects/' | relative_url }}">&larr; all projects</a>
+    <span></span>
+  </footer>
+</article>
